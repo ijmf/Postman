@@ -1,0 +1,721 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API de Controle de Finanças Pessoais",
+    "description": "Web API de controle financeiro pessoal desenvolvida com a finalidade de testes. <br> Documentação no formato JSON - [APIMinhasFinancasv1.1.json](https://www.ticode.com.br/minhas-financas/swagger/v1.1/v1.1.json).",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://www.ticode.com.br/minhas-financas",
+      "description": "Ambiente externo"
+    },
+    {
+      "url": "http://localhost/minhas-financas",
+      "description": "Ambiente de desenvolvimento local"
+    }
+  ],
+  "paths": {
+    "/api/v1/usuario/login": {
+      "post": {
+        "tags": [
+          "Login"
+        ],
+        "summary": "Forma de obter o token para acessar a API",
+        "description": "Através do login e senha corretos o usuário pode acessar o token para utilizar na autenticação da aplicação.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SchemaLogin"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login efetuado com sucesso.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SchemaRetornoLogin"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Retorna status e mensagem de erro",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErroRequest"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro no servidor"
+          }
+        }
+      }
+    },
+    "/api/v1/usuario": {
+      "post": {
+        "tags": [
+          "Usuário"
+        ],
+        "summary": "Realiza o cadastro de um novo usuário.",
+        "description": "Endpoint responsável pelo cadastro de um novo usuário para ter acesso as demais funcionalidades da aplicação. *Nota:* Atualmente ainda não é possível alterar ou desativar o usuário contudo estamos trabalhando para em breve ter essa nova funcionalidade.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SchemaUsuarioCadastro"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Retorno do usuário cadastrado com sucesso.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SchemaRetornoUsuario"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Retorna status e mensagem de erro",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErroRequest"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro no servidor"
+          }
+        }
+      }
+    },
+    "/api/v1/transacao": {
+      "post": {
+        "tags": [
+          "Transação"
+        ],
+        "summary": "Realiza o cadastro de uma nova transação.",
+        "description": "As transações podem ser: <p>\n- **Efetivada:** uma despesa ou receita que já foi paga. <br> Para sinalizar que uma transação foi **efetivada** deve-se preencher o campo efetivada com 1. <br> Caso o contrário deve-se preencher com 0. <br>\nAs transações podem ser do tipo:<p>\n- **R:** Receita (Dinheiro que entrou na conta); <br>\n- **D:** Despesa (Dinheiro que saiu da conta por algum motivo) <br>\n",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SchemaTransacaoCadastro"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Retorno do usuário cadastrado com sucesso.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SchemaTransacaoRetornoCadastro"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Retorna status e mensagem de erro",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErroRequestTransacao"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro no servidor"
+          }
+        }
+      }
+    },
+    "/api/v1/transacao/{id}": {
+      "get": {
+        "tags": [
+          "Transação"
+        ],
+        "summary": "Consulta a transação específica através do id.",
+        "description": "Retorna as informações de uma transação específica passada pela path parameter.\n",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id da transação",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retorno da transação.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SchemaTransacaoConsulta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Retorna status e mensagem de erro",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErroRequest"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro no servidor"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Transação"
+        ],
+        "summary": "Realiza o cadastro de uma nova transação.",
+        "description": "Altera uma transação através do id passado pelo path parameter. Ele possui os mesmos requisitos que o cadastro de uma nova transação.\n",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id da transação",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SchemaTransacaoAlteracao"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Retorno do usuário cadastrado com sucesso.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SchemaTransacaoRetornoAlteracao"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Retorna status e mensagem de erro",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErroRequestTransacao"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro no servidor"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Transação"
+        ],
+        "summary": "Excluir transação sem recorrência através do seu id.",
+        "description": "Exclui a transação através do id passado pela path parameter.\n",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id da transação sem recorrência",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retorno após exclusão da transação com sucesso.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessRequest"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Retorna status e mensagem de erro",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErroNotFound"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro no servidor"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "SuccessRequest": {
+        "type": "object",
+        "properties": {
+          "mensagem": {
+            "type": "string",
+            "example": "Agenda excluída com sucesso"
+          }
+        }
+      },
+      "ErroRequest": {
+        "type": "object",
+        "properties": {
+          "mensagem": {
+            "type": "string"
+          }
+        }
+      },
+      "ErroNotFound": {
+        "type": "object",
+        "properties": {
+          "mensagem": {
+            "type": "string",
+            "example": "Transação não encontrada."
+          }
+        }
+      },
+      "ErroRequestTransacao": {
+        "type": "object",
+        "properties": {
+          "mensagem": {
+            "type": "string",
+            "example": "O preenchimento de valor é obrigatório."
+          }
+        }
+      },
+      "SchemaLogin": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "usuario@teste.com"
+          },
+          "senha": {
+            "type": "string",
+            "example": "password"
+          }
+        }
+      },
+      "SchemaRetornoLogin": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string"
+          },
+          "mensagem": {
+            "type": "string"
+          }
+        }
+      },
+      "SchemaUsuarioCadastro": {
+        "type": "object",
+        "properties": {
+          "usuario": {
+            "type": "object",
+            "required": [
+              "nome",
+              "email",
+              "senha"
+            ],
+            "properties": {
+              "nome": {
+                "type": "string",
+                "example": "Ana Valadares"
+              },
+              "dataNascimento": {
+                "type": "string",
+                "format": "date",
+                "pattern": "YYYYMMDD",
+                "example": 19980320
+              },
+              "email": {
+                "type": "string",
+                "example": "usuario@teste.com"
+              },
+              "senha": {
+                "type": "string",
+                "example": "password"
+              },
+              "profissao": {
+                "type": "string",
+                "example": "Analista de qualidade"
+              },
+              "telefone": {
+                "type": "integer",
+                "example": 2126235978
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "SchemaRetornoUsuario": {
+        "type": "object",
+        "properties": {
+          "usuario": {
+            "type": "object",
+            "required": [
+              "nome",
+              "email",
+              "senha"
+            ],
+            "properties": {
+              "id": {
+                "type": "integer",
+                "example": 12
+              },
+              "nome": {
+                "type": "string",
+                "example": "Ana Valadares"
+              },
+              "dataNascimento": {
+                "type": "string",
+                "format": "date",
+                "pattern": "YYYYMMDD",
+                "example": 19980320
+              },
+              "email": {
+                "type": "string",
+                "example": "usuario@teste.com"
+              },
+              "senha": {
+                "type": "string",
+                "example": "password"
+              },
+              "profissao": {
+                "type": "string",
+                "example": "Analista de qualidade"
+              },
+              "telefone": {
+                "type": "integer",
+                "example": 2126235978
+              }
+            },
+            "additionalProperties": false
+          },
+          "mensagem": {
+            "type": "string",
+            "example": "Cadastro realizado com sucesso."
+          }
+        }
+      },
+      "SchemaTransacaoCadastro": {
+        "type": "object",
+        "properties": {
+          "transacao": {
+            "type": "object",
+            "required": [
+              "descricao",
+              "valor",
+              "dataVencimento",
+              "efetivada",
+              "tipo"
+            ],
+            "properties": {
+              "descricao": {
+                "type": "string"
+              },
+              "valor": {
+                "type": "number",
+                "format": "double",
+                "example": 401.56
+              },
+              "dataVencimento": {
+                "type": "string",
+                "format": "date",
+                "pattern": "YYYYMMDD",
+                "example": 19980320
+              },
+              "efetivada": {
+                "type": "integer",
+                "enum": [
+                  0,
+                  1
+                ],
+                "description": "0 - Não efetivada e 1 - Efetivada"
+              },
+              "tipo": {
+                "type": "string",
+                "enum": [
+                  "D",
+                  "R"
+                ],
+                "description": "D - Despesa e R - Receita"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "SchemaTransacaoRetornoCadastro": {
+        "type": "object",
+        "properties": {
+          "transacao": {
+            "type": "object",
+            "required": [
+              "descricao",
+              "valor",
+              "dataVencimento",
+              "efetivada",
+              "tipo"
+            ],
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "descricao": {
+                "type": "string"
+              },
+              "valor": {
+                "type": "number",
+                "format": "double",
+                "example": 401.56
+              },
+              "dataVencimento": {
+                "type": "string",
+                "format": "date",
+                "pattern": "YYYYMMDD",
+                "example": 19980320
+              },
+              "efetivada": {
+                "type": "integer",
+                "enum": [
+                  0,
+                  1
+                ],
+                "description": "0 - Não efetivada e 1 - Efetivada"
+              },
+              "tipo": {
+                "type": "string",
+                "enum": [
+                  "D",
+                  "R"
+                ],
+                "description": "D - Despesa e R - Receita"
+              }
+            },
+            "additionalProperties": false
+          },
+          "mensagem": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SchemaTransacaoConsulta": {
+        "type": "object",
+        "properties": {
+          "transacao": {
+            "type": "object",
+            "required": [
+              "descricao",
+              "valor",
+              "dataVencimento",
+              "efetivada",
+              "tipo"
+            ],
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "descricao": {
+                "type": "string"
+              },
+              "valor": {
+                "type": "number",
+                "format": "double",
+                "example": 401.56
+              },
+              "dataVencimento": {
+                "type": "string",
+                "format": "date",
+                "pattern": "YYYYMMDD",
+                "example": 19980320
+              },
+              "efetivada": {
+                "type": "integer",
+                "enum": [
+                  0,
+                  1
+                ],
+                "description": "0 - Não efetivada e 1 - Efetivada"
+              },
+              "tipo": {
+                "type": "string",
+                "enum": [
+                  "D",
+                  "R"
+                ],
+                "description": "D - Despesa e R - Receita"
+              }
+            },
+            "additionalProperties": false
+          },
+          "mensagem": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SchemaTransacaoAlteracao": {
+        "type": "object",
+        "properties": {
+          "transacao": {
+            "type": "object",
+            "required": [
+              "descricao",
+              "valor",
+              "dataVencimento",
+              "efetivada",
+              "tipo"
+            ],
+            "properties": {
+              "descricao": {
+                "type": "string"
+              },
+              "valor": {
+                "type": "number",
+                "format": "double",
+                "example": 401.56
+              },
+              "dataVencimento": {
+                "type": "string",
+                "format": "date",
+                "pattern": "YYYYMMDD",
+                "example": 19980320
+              },
+              "efetivada": {
+                "type": "integer",
+                "enum": [
+                  0,
+                  1
+                ],
+                "description": "0 - Não efetivada e 1 - Efetivada"
+              },
+              "tipo": {
+                "type": "string",
+                "enum": [
+                  "D",
+                  "R"
+                ],
+                "description": "D - Despesa e R - Receita"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "SchemaTransacaoRetornoAlteracao": {
+        "type": "object",
+        "properties": {
+          "transacao": {
+            "type": "object",
+            "required": [
+              "descricao",
+              "valor",
+              "dataVencimento",
+              "efetivada",
+              "tipo"
+            ],
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "descricao": {
+                "type": "string"
+              },
+              "valor": {
+                "type": "number",
+                "format": "double",
+                "example": 401.56
+              },
+              "dataVencimento": {
+                "type": "string",
+                "format": "date",
+                "pattern": "YYYYMMDD",
+                "example": 19980320
+              },
+              "efetivada": {
+                "type": "integer",
+                "enum": [
+                  0,
+                  1
+                ],
+                "description": "0 - Não efetivada e 1 - Efetivada"
+              },
+              "tipo": {
+                "type": "string",
+                "enum": [
+                  "D",
+                  "R"
+                ],
+                "description": "D - Despesa e R - Receita"
+              }
+            },
+            "additionalProperties": false
+          },
+          "mensagem": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "JWT Authorization header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": []
+    }
+  ]
+}

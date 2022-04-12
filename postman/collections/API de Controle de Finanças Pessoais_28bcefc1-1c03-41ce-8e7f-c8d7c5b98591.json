@@ -1,0 +1,1193 @@
+{
+    "info": {
+        "_postman_id": "56d9f986-2e1b-447c-b04e-8aad8256f9f1",
+        "name": "API de Controle de Finanças Pessoais",
+        "description": "Web API de controle financeiro pessoal desenvolvida com a finalidade de testes. <br> Documentação no formato JSON - [APIMinhasFinancasv1.1.json](https://www.ticode.com.br/minhas-financas/swagger/v1.1/v1.1.json).",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Login",
+            "item": [
+                {
+                    "name": "Forma de obter o token para acessar a API",
+                    "id": "56fefb05-bc08-43fa-82da-6b5a472b0e4b",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"email\": \"usuario@teste.com\",\n\t\"senha\": \"password\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/v1/usuario/login",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "usuario",
+                                "login"
+                            ]
+                        },
+                        "description": "Através do login e senha corretos o usuário pode acessar o token para utilizar na autenticação da aplicação."
+                    },
+                    "response": [
+                        {
+                            "id": "4f8b7ea2-87fe-417b-8eef-08cf5cbff144",
+                            "name": "Login efetuado com sucesso.",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n\t\"email\": \"usuario@teste.com\",\n\t\"senha\": \"password\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/api/v1/usuario/login",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "usuario",
+                                        "login"
+                                    ]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": "{\n\t\"token\": \"reprehenderit\",\n\t\"mensagem\": \"laboris et\"\n}"
+                        },
+                        {
+                            "id": "42fbd6c3-1639-4ccf-8944-15a935ab6547",
+                            "name": "Retorna status e mensagem de erro",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n\t\"email\": \"usuario@teste.com\",\n\t\"senha\": \"password\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/api/v1/usuario/login",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "usuario",
+                                        "login"
+                                    ]
+                                }
+                            },
+                            "status": "Bad Request",
+                            "code": 400,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": "{\n\t\"mensagem\": \"dolor eu enim id\"\n}"
+                        },
+                        {
+                            "id": "b1400662-c384-4557-ad04-b1c9342c1a1a",
+                            "name": "Erro no servidor",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n\t\"email\": \"usuario@teste.com\",\n\t\"senha\": \"password\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/api/v1/usuario/login",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "usuario",
+                                        "login"
+                                    ]
+                                }
+                            },
+                            "status": "Internal Server Error",
+                            "code": 500,
+                            "_postman_previewlanguage": "text",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "text/plain"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": ""
+                        }
+                    ]
+                }
+            ],
+            "id": "fad2860b-d303-43d6-bb14-88f39f680698"
+        },
+        {
+            "name": "Usuário",
+            "item": [
+                {
+                    "name": "Realiza o cadastro de um novo usuário.",
+                    "id": "5da2073c-2fde-496f-b8d4-1f07e131b745",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"usuario\": {\n\t\t\"nome\": \"Ana Valadares\",\n\t\t\"email\": \"usuario@teste.com\",\n\t\t\"senha\": \"password\",\n\t\t\"dataNascimento\": \"20220411\",\n\t\t\"profissao\": \"Analista de qualidade\",\n\t\t\"telefone\": 2126235978\n\t}\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/v1/usuario",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "usuario"
+                            ]
+                        },
+                        "description": "Endpoint responsável pelo cadastro de um novo usuário para ter acesso as demais funcionalidades da aplicação. *Nota:* Atualmente ainda não é possível alterar ou desativar o usuário contudo estamos trabalhando para em breve ter essa nova funcionalidade."
+                    },
+                    "response": [
+                        {
+                            "id": "0d8b37b7-8b33-4867-971c-1a6d808ccb8d",
+                            "name": "Retorno do usuário cadastrado com sucesso.",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n\t\"usuario\": {\n\t\t\"nome\": \"Ana Valadares\",\n\t\t\"email\": \"usuario@teste.com\",\n\t\t\"senha\": \"password\",\n\t\t\"dataNascimento\": \"YYYYMMDD\",\n\t\t\"profissao\": \"Analista de qualidade\",\n\t\t\"telefone\": 2126235978\n\t}\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/api/v1/usuario",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "usuario"
+                                    ]
+                                }
+                            },
+                            "status": "Created",
+                            "code": 201,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": "{\n\t\"usuario\": {\n\t\t\"nome\": \"Ana Valadares\",\n\t\t\"email\": \"usuario@teste.com\",\n\t\t\"senha\": \"password\",\n\t\t\"id\": 12,\n\t\t\"dataNascimento\": \"YYYYMMDD\",\n\t\t\"profissao\": \"Analista de qualidade\",\n\t\t\"telefone\": 2126235978\n\t},\n\t\"mensagem\": \"Cadastro realizado com sucesso.\"\n}"
+                        },
+                        {
+                            "id": "e458e728-c422-4eea-a289-f14efd8ac7db",
+                            "name": "Retorna status e mensagem de erro",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n\t\"usuario\": {\n\t\t\"nome\": \"Ana Valadares\",\n\t\t\"email\": \"usuario@teste.com\",\n\t\t\"senha\": \"password\",\n\t\t\"dataNascimento\": \"YYYYMMDD\",\n\t\t\"profissao\": \"Analista de qualidade\",\n\t\t\"telefone\": 2126235978\n\t}\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/api/v1/usuario",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "usuario"
+                                    ]
+                                }
+                            },
+                            "status": "Bad Request",
+                            "code": 400,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": "{\n\t\"mensagem\": \"dolor eu enim id\"\n}"
+                        },
+                        {
+                            "id": "4477eacc-cf1e-4afa-b0c4-7c38880d3d73",
+                            "name": "Erro no servidor",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n\t\"usuario\": {\n\t\t\"nome\": \"Ana Valadares\",\n\t\t\"email\": \"usuario@teste.com\",\n\t\t\"senha\": \"password\",\n\t\t\"dataNascimento\": \"YYYYMMDD\",\n\t\t\"profissao\": \"Analista de qualidade\",\n\t\t\"telefone\": 2126235978\n\t}\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/api/v1/usuario",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "usuario"
+                                    ]
+                                }
+                            },
+                            "status": "Internal Server Error",
+                            "code": 500,
+                            "_postman_previewlanguage": "text",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "text/plain"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": ""
+                        }
+                    ]
+                }
+            ],
+            "id": "18489cee-457e-4905-aff6-bf6226be9070"
+        },
+        {
+            "name": "Transação",
+            "item": [
+                {
+                    "name": "Realiza o cadastro de uma nova transação.",
+                    "id": "7f37eda5-6e9b-4011-a170-d6771fdb7a8f",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYWRvc1VzdWFyaW8iOnsibm9tZSI6InF1aXMgY3VwaWRhdGF0IiwiY29kaWdvVXN1YXJpbyI6IjIzNSJ9fQ.Bl3qykAenZm6N0J9DkYLxCkFdvWdcsuK48wyq-bjM1s",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"transacao\": {\n\t\t\"descricao\": \"sint\",\n\t\t\"valor\": 401.56,\n\t\t\"dataVencimento\": \"20220411\",\n\t\t\"efetivada\": 0,\n\t\t\"tipo\": \"R\"\n\t}\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/v1/transacao",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "transacao"
+                            ]
+                        },
+                        "description": "As transações podem ser: <p>\n- **Efetivada:** uma despesa ou receita que já foi paga. <br> Para sinalizar que uma transação foi **efetivada** deve-se preencher o campo efetivada com 1. <br> Caso o contrário deve-se preencher com 0. <br>\nAs transações podem ser do tipo:<p>\n- **R:** Receita (Dinheiro que entrou na conta); <br>\n- **D:** Despesa (Dinheiro que saiu da conta por algum motivo) <br>\n"
+                    },
+                    "response": [
+                        {
+                            "id": "0d3ef0a5-62ff-4ed4-8c06-bec88409afbc",
+                            "name": "Retorno do usuário cadastrado com sucesso.",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n\t\"transacao\": {\n\t\t\"descricao\": \"sint\",\n\t\t\"valor\": 401.56,\n\t\t\"dataVencimento\": \"YYYYMMDD\",\n\t\t\"efetivada\": 0,\n\t\t\"tipo\": \"R\"\n\t}\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/api/v1/transacao",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "transacao"
+                                    ]
+                                }
+                            },
+                            "status": "Created",
+                            "code": 201,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": "{\n\t\"transacao\": {\n\t\t\"descricao\": \"do adipisicing\",\n\t\t\"valor\": 401.56,\n\t\t\"dataVencimento\": \"YYYYMMDD\",\n\t\t\"efetivada\": 0,\n\t\t\"tipo\": \"R\",\n\t\t\"id\": -76682847\n\t},\n\t\"mensagem\": \"sunt irure aute ullamco\"\n}"
+                        },
+                        {
+                            "id": "f21649b1-8b6b-4531-bb5d-6791ebd20dbf",
+                            "name": "Retorna status e mensagem de erro",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n\t\"transacao\": {\n\t\t\"descricao\": \"sint\",\n\t\t\"valor\": 401.56,\n\t\t\"dataVencimento\": \"YYYYMMDD\",\n\t\t\"efetivada\": 0,\n\t\t\"tipo\": \"R\"\n\t}\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/api/v1/transacao",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "transacao"
+                                    ]
+                                }
+                            },
+                            "status": "Bad Request",
+                            "code": 400,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": "{\n\t\"mensagem\": \"O preenchimento de valor é obrigatório.\"\n}"
+                        },
+                        {
+                            "id": "aaaad697-eb59-4e68-8617-c6397cac673e",
+                            "name": "Erro no servidor",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n\t\"transacao\": {\n\t\t\"descricao\": \"sint\",\n\t\t\"valor\": 401.56,\n\t\t\"dataVencimento\": \"YYYYMMDD\",\n\t\t\"efetivada\": 0,\n\t\t\"tipo\": \"R\"\n\t}\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/api/v1/transacao",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "transacao"
+                                    ]
+                                }
+                            },
+                            "status": "Internal Server Error",
+                            "code": 500,
+                            "_postman_previewlanguage": "text",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "text/plain"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Consulta a transação específica através do id.",
+                    "id": "30e9913e-c47d-444d-a175-a4cda0dad701",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYWRvc1VzdWFyaW8iOnsibm9tZSI6InF1aXMgY3VwaWRhdGF0IiwiY29kaWdvVXN1YXJpbyI6IjIzNSJ9fQ.Bl3qykAenZm6N0J9DkYLxCkFdvWdcsuK48wyq-bjM1s",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/v1/transacao/:id",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "transacao",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "666",
+                                    "description": "(Required) Id da transação"
+                                }
+                            ]
+                        },
+                        "description": "Retorna as informações de uma transação específica passada pela path parameter.\n"
+                    },
+                    "response": [
+                        {
+                            "id": "6f929ec1-4380-42ed-8474-213ea778f4ec",
+                            "name": "Retorno da transação.",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/api/v1/transacao/:id",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "transacao",
+                                        ":id"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "id",
+                                            "value": "2798821",
+                                            "description": "(Required) Id da transação"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": "{\n\t\"transacao\": {\n\t\t\"descricao\": \"do adipisicing\",\n\t\t\"valor\": 401.56,\n\t\t\"dataVencimento\": \"YYYYMMDD\",\n\t\t\"efetivada\": 0,\n\t\t\"tipo\": \"R\",\n\t\t\"id\": -76682847\n\t},\n\t\"mensagem\": \"sunt irure aute ullamco\"\n}"
+                        },
+                        {
+                            "id": "6a1eec9d-cd1f-4706-a8ac-8a05e832c9e5",
+                            "name": "Retorna status e mensagem de erro",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/api/v1/transacao/:id",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "transacao",
+                                        ":id"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "id",
+                                            "value": "2798821",
+                                            "description": "(Required) Id da transação"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "Bad Request",
+                            "code": 400,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": "{\n\t\"mensagem\": \"dolor eu enim id\"\n}"
+                        },
+                        {
+                            "id": "74d451ed-1e6b-4a90-8c2f-f132acea9a2a",
+                            "name": "Erro no servidor",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/api/v1/transacao/:id",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "transacao",
+                                        ":id"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "id",
+                                            "value": "2798821",
+                                            "description": "(Required) Id da transação"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "Internal Server Error",
+                            "code": 500,
+                            "_postman_previewlanguage": "text",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "text/plain"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Realiza o cadastro de uma nova transação.",
+                    "id": "ddbfc312-a3e4-4393-a711-98c50fc646ed",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYWRvc1VzdWFyaW8iOnsibm9tZSI6InF1aXMgY3VwaWRhdGF0IiwiY29kaWdvVXN1YXJpbyI6IjIzNSJ9fQ.Bl3qykAenZm6N0J9DkYLxCkFdvWdcsuK48wyq-bjM1s",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"transacao\": {\n\t\t\"descricao\": \"sint\",\n\t\t\"valor\": 401.56,\n\t\t\"dataVencimento\": \"20220411\",\n\t\t\"efetivada\": 0,\n\t\t\"tipo\": \"R\"\n\t}\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/v1/transacao/:id",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "transacao",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "id": "8f66458d-c190-4168-b0c2-2e7694ef05bb",
+                                    "key": "id",
+                                    "value": "2798821",
+                                    "description": "(Required) Id da transação"
+                                }
+                            ]
+                        },
+                        "description": "Altera uma transação através do id passado pelo path parameter. Ele possui os mesmos requisitos que o cadastro de uma nova transação.\n"
+                    },
+                    "response": [
+                        {
+                            "id": "b2bd8139-aaa2-4826-aa3f-aa72f9fff0a3",
+                            "name": "Retorno do usuário cadastrado com sucesso.",
+                            "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n\t\"transacao\": {\n\t\t\"descricao\": \"sint\",\n\t\t\"valor\": 401.56,\n\t\t\"dataVencimento\": \"YYYYMMDD\",\n\t\t\"efetivada\": 0,\n\t\t\"tipo\": \"R\"\n\t}\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/api/v1/transacao/:id",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "transacao",
+                                        ":id"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "id",
+                                            "value": "2798821",
+                                            "description": "(Required) Id da transação"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": "{\n\t\"transacao\": {\n\t\t\"descricao\": \"do adipisicing\",\n\t\t\"valor\": 401.56,\n\t\t\"dataVencimento\": \"YYYYMMDD\",\n\t\t\"efetivada\": 0,\n\t\t\"tipo\": \"R\",\n\t\t\"id\": -76682847\n\t},\n\t\"mensagem\": \"sunt irure aute ullamco\"\n}"
+                        },
+                        {
+                            "id": "8459518a-efd6-4fc3-b06a-943f78f7e269",
+                            "name": "Retorna status e mensagem de erro",
+                            "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n\t\"transacao\": {\n\t\t\"descricao\": \"sint\",\n\t\t\"valor\": 401.56,\n\t\t\"dataVencimento\": \"YYYYMMDD\",\n\t\t\"efetivada\": 0,\n\t\t\"tipo\": \"R\"\n\t}\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/api/v1/transacao/:id",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "transacao",
+                                        ":id"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "id",
+                                            "value": "2798821",
+                                            "description": "(Required) Id da transação"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "Bad Request",
+                            "code": 400,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": "{\n\t\"mensagem\": \"O preenchimento de valor é obrigatório.\"\n}"
+                        },
+                        {
+                            "id": "82cc618c-f3c3-4c9e-b7a9-6c98a94856dd",
+                            "name": "Erro no servidor",
+                            "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n\t\"transacao\": {\n\t\t\"descricao\": \"sint\",\n\t\t\"valor\": 401.56,\n\t\t\"dataVencimento\": \"YYYYMMDD\",\n\t\t\"efetivada\": 0,\n\t\t\"tipo\": \"R\"\n\t}\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/api/v1/transacao/:id",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "transacao",
+                                        ":id"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "id",
+                                            "value": "2798821",
+                                            "description": "(Required) Id da transação"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "Internal Server Error",
+                            "code": 500,
+                            "_postman_previewlanguage": "text",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "text/plain"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Excluir transação sem recorrência através do seu id.",
+                    "id": "397085c2-e564-4134-83ad-b6aef78d259c",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYWRvc1VzdWFyaW8iOnsibm9tZSI6InF1aXMgY3VwaWRhdGF0IiwiY29kaWdvVXN1YXJpbyI6IjIzNSJ9fQ.Bl3qykAenZm6N0J9DkYLxCkFdvWdcsuK48wyq-bjM1s",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/v1/transacao/:id",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "v1",
+                                "transacao",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "666",
+                                    "description": "(Required) Id da transação sem recorrência"
+                                }
+                            ]
+                        },
+                        "description": "Exclui a transação através do id passado pela path parameter.\n"
+                    },
+                    "response": [
+                        {
+                            "id": "bb123462-b9f7-426d-b912-14555aaceb26",
+                            "name": "Retorno após exclusão da transação com sucesso.",
+                            "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/api/v1/transacao/:id",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "transacao",
+                                        ":id"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "id",
+                                            "value": "2798821",
+                                            "description": "(Required) Id da transação sem recorrência"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": "{\n\t\"mensagem\": \"Agenda excluída com sucesso\"\n}"
+                        },
+                        {
+                            "id": "c522b5f4-d247-4bb8-b744-625b70f4970e",
+                            "name": "Retorna status e mensagem de erro",
+                            "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/api/v1/transacao/:id",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "transacao",
+                                        ":id"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "id",
+                                            "value": "2798821",
+                                            "description": "(Required) Id da transação sem recorrência"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "Not Found",
+                            "code": 404,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": "{\n\t\"mensagem\": \"Transação não encontrada.\"\n}"
+                        },
+                        {
+                            "id": "9517f43f-226b-40ad-bbe5-5ac870ae6d61",
+                            "name": "Erro no servidor",
+                            "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/api/v1/transacao/:id",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "transacao",
+                                        ":id"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "id",
+                                            "value": "2798821",
+                                            "description": "(Required) Id da transação sem recorrência"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "Internal Server Error",
+                            "code": 500,
+                            "_postman_previewlanguage": "text",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "text/plain"
+                                }
+                            ],
+                            "cookie": [],
+                            "responseTime": null,
+                            "body": ""
+                        }
+                    ]
+                }
+            ],
+            "id": "8de300eb-ebc3-4813-b71c-9841fe3dc5f9"
+        }
+    ],
+    "auth": {
+        "type": "bearer",
+        "bearer": [
+            {
+                "key": "token",
+                "value": "<Bearer Token>",
+                "type": "string"
+            }
+        ]
+    },
+    "variable": [
+        {
+            "id": "5bbf6714-58aa-4724-8c97-bc0a70c7dc5a",
+            "key": "baseUrl",
+            "value": "http://www.ticode.com.br/minhas-financas",
+            "type": "string"
+        }
+    ]
+}
